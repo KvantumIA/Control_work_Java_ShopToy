@@ -8,7 +8,7 @@ public class Main {
 //        controller2.createToy("Кукла", 3);
 //        controller2.getToys();
 
-        controller1.createShopQueue();
-        controller1.getToysQueue();
+        controller1.createQueue();
+        controller1.getQueue();
     }
 }

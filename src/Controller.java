@@ -15,31 +15,31 @@ public class Controller {
         }
     }
 
-//    public void createQueue() {
-//        shop.addShopQueue();
-////        System.out.println(shop.addShopQueue());
+    public void createQueue() {
+        shop.addShopQueue();
+    }
+
+    public void getQueue(){
+        PriorityQueue<Toys> queue = shop.addShopQueue();
+        for (Toys toy: queue){
+            System.out.println(toy);
+        }
+    }
+
+//    public PriorityQueue<Toys> createShopQueue() {
+//        List<Toys> queue2 = new ArrayList<>(dataService.getAllToys());
+////        PriorityQueue<Toys> toysQueue= new PriorityQueue<Toys>();
+//        shop..addAll(queue2);
+//        return shop.queue;
 //    }
-//    public void getQueue(){
-//        PriorityQueue<Toys> queue = getToys();
+//    public void getToysQueue(){
+////        PriorityQueue<Toys> toysQueue= new PriorityQueue<>();
+////        toysQueue.addAll(shop.queue);
+////        return toysQueue;
+//        PriorityQueue<Toys> queue = new PriorityQueue<>(shop.queue);
 //        for (Toys toys: queue){
 //            System.out.println(toys);
 //        }
 //    }
-
-    public PriorityQueue<Toys> createShopQueue() {
-        List<Toys> queue2 = new ArrayList<>(dataService.getAllToys());
-//        PriorityQueue<Toys> toysQueue= new PriorityQueue<Toys>();
-        shop.queue.addAll(queue2);
-        return shop.queue;
-    }
-    public void getToysQueue(){
-//        PriorityQueue<Toys> toysQueue= new PriorityQueue<>();
-//        toysQueue.addAll(shop.queue);
-//        return toysQueue;
-        PriorityQueue<Toys> queue = new PriorityQueue<>(shop.queue);
-        for (Toys toys: queue){
-            System.out.println(toys);
-        }
-    }
 }
 
