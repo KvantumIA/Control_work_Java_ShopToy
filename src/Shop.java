@@ -6,8 +6,8 @@ public class Shop {
     private PriorityQueue<Toys> queue;
     private final DataService dataService = new DataService();
 
-    public void shop() {
-        this.queue = new PriorityQueue<Toys>();
+    public Shop() {
+        this.queue = new PriorityQueue<>();
     }
 
     public PriorityQueue<Toys> getQueue() {
@@ -18,16 +18,20 @@ public class Shop {
         this.queue = queue;
     }
 
-    public PriorityQueue<Toys> addShopQueue() {
-        List<Toys> queue2 = new ArrayList<>(dataService.getAllToys());
-//        PriorityQueue<Toys> toysQueue= new PriorityQueue<Toys>();
-        queue.addAll(queue2);
-        return queue;
+    public void addShopQueue(List<Toys> toys) {
+//        List<Toys> queueToy = new ArrayList<>(toys);
+//        PriorityQueue<Toys> queue1 = new PriorityQueue<>();
+//        for(Toys toy : queueToy){
+//            this.queue.add(toy);
+        this.queue.addAll(toys);
+
+//        this.queue.addAll(queueToy);
     }
 
-//    public void getToysQueue() {
-//        PriorityQueue<Toys> toysQueue = new PriorityQueue<>();
-//        toysQueue.addAll(queue);
-////        return toysQueue;
+    public PriorityQueue<Toys> getToysQueue() {
+        PriorityQueue<Toys> toysQueue = new PriorityQueue<>();
+        toysQueue.addAll(queue);
+        return toysQueue;
     }
+}
 
