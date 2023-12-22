@@ -1,8 +1,6 @@
 package Controller;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import Data.DataService;
 import Data.Files;
@@ -15,7 +13,18 @@ public class Controller {
     private final Shop shop = new Shop();
     private final Files files = new Files();
 
-    public void createToy(String name, int count) {
+    public void createToy() {
+        System.out.print("Введите название игрушки: ");
+        Scanner scanner1 = new Scanner(System.in);
+        String name = scanner1.nextLine();
+        System.out.print("Введите шанс выпадения игрушки от 10 до 100: ");
+        Scanner scanner2 = new Scanner(System.in);
+        int count = 0;
+        if (scanner2.hasNextInt()) {
+            count = scanner2.nextInt();
+        } else {
+            System.out.println("Ошибка! Введите цифры.");
+        }
         dataService.createToy(name, count);
     }
 
@@ -50,19 +59,26 @@ public class Controller {
                 int randomIndex = random.nextInt(toys.size());
                 return toys.get(randomIndex);
             } else {
-            throw new RuntimeException("Список игрушек пустой");
-        }
+                throw new RuntimeException("Список игрушек пустой");
+            }
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при выборе случайной игрушки", e);
         }
     }
 
-        public void readFile () {
-            files.readFile();
-        }
-
-        public void saveGift (Toys toy){
-            files.saveGift(toy);
-        }
+    public void readFile() {
+        files.readFile();
     }
+
+    public void saveGift(Toys toy) {
+        files.saveGift(toy);
+    }
+
+    public void delToy() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите название игрушки: ");
+        String name = scanner.nextLine();
+        files.delToy(name);
+    }
+}
 

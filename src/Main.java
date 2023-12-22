@@ -12,18 +12,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        Controller controller1 = new Controller();
-//        Files files = new Files();
-//        List<Toys> s = files.saveAsList();
-//        for (Toys sd : s){
-//            System.out.println(sd);
-//        }
-
         MainMenu menu = new MainMenu();
         menu.start();
-
-//        controller1.createQueue();
-//        controller1.getQueue();
     }
 }
 

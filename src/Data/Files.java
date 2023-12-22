@@ -12,11 +12,10 @@ public class Files {
             if (file.createNewFile()) {
                 writeToFile(path, toyData);
                 writeToFile2(path2, toyData);
-                System.out.println("Файл успешно создан и игрушка добавлена.");
+                System.out.println("Файл успешно создан.");
             } else {
                 writeToFile(path, toyData);
                 writeToFile2(path2, toyData);
-                System.out.println("Игрушки сохранены.");
             }
         } catch (FileNotFoundException e) {
             System.out.println("Открыть несуществующий файл нельзя, ваш путь к файлу -> " + path);
@@ -79,17 +78,17 @@ public class Files {
             }
         } catch (IOException | IllegalArgumentException e) {
             System.out.println("Файл пустой!");
-        } catch (Exception s){
+        } catch (Exception s) {
             System.out.println("Файл пустой2!");
         }
         return saveAsList;
     }
 
-    public void clearFile(){
+    public void clearFile() {
         String path = "src/Files/ListToys.txt";
         String path2 = "src/Files/ReadToys.txt";
         try (FileWriter fileWriter = new FileWriter(path, false);
-        FileWriter fileWriter2 = new FileWriter(path2, false)){
+             FileWriter fileWriter2 = new FileWriter(path2, false)) {
             String clear = "";
             fileWriter.write(clear);
             fileWriter2.write(clear);
@@ -98,16 +97,49 @@ public class Files {
         }
     }
 
-    public void saveGift(Toys toy){
+    public void saveGift(Toys toy) {
         String path = "src/Files/GiftToys.txt";
         List<Toys> toys = new ArrayList<>();
         toys.add(toy);
-        try (FileWriter fileWriter = new FileWriter(path, true)){
+        try (FileWriter fileWriter = new FileWriter(path, true)) {
             for (Toys t : toys) {
                 fileWriter.write(t + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void delToy(String name) {
+        List<Toys> toys = saveAsList();
+        List<Toys> newToys = new ArrayList<>();
+        for (Toys toy : toys) {
+            if (!toy.getName().equals(name)) {
+                newToys.add(toy);
+            }
+        }
+        clearFile();
+        fileSave(newToys);
+    }
+
+    public void delToy(Toys toys) {
+        List<Toys> toysOld = saveAsList();
+        List<Toys> newToys = new ArrayList<>();
+        int id1 = ((Toy) toys).getToyId();
+        for (Toys toy : toysOld) {
+            int id2 = ((Toy) toy).getToyId();
+            if (!(id2 == id1)) {
+                if (toy.getName().equals(toys.getName())) {
+                    Toys toys1 = new Toy(toy.getName(), toy.getCount() - 10, ((Toy) toy).getToyId());
+                    newToys.add(toys1);
+                } else {
+                    newToys.add(toy);
+                }
+            } else {
+                System.out.println("Ошибка: подарок не найден!");
+            }
+            clearFile();
+            fileSave(newToys);
         }
     }
 }
