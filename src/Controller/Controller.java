@@ -57,14 +57,5 @@ public class Controller {
     public void readFile() {
         files.readFile();
     }
-
-    public void delToyFile(){
-        System.out.println("Список игрушек:");
-        readFile();
-        System.out.print("Напишите название игрушки: ");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-
-    }
 }
 

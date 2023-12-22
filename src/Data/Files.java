@@ -1,21 +1,22 @@
 package Data;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Files {
     public void fileSave(List<Toys> toyData) {
         String path = "src/Files/ListToys.txt";
+        String path2 = "src/Files/ReadToys.txt";
         try {
             File file = new File(path);
             if (file.createNewFile()) {
                 writeToFile(path, toyData);
-                System.out.println("Файл успешно создан и запись сохранена.");
+                writeToFile2(path2, toyData);
+                System.out.println("Файл успешно создан и игрушка добавлена.");
             } else {
                 writeToFile(path, toyData);
-                System.out.println("В существующий файл добавлена запись.");
+                writeToFile2(path2, toyData);
+                System.out.println("Игрушки сохранены.");
             }
         } catch (FileNotFoundException e) {
             System.out.println("Открыть несуществующий файл нельзя, ваш путь к файлу -> " + path);
@@ -27,7 +28,20 @@ public class Files {
     public void writeToFile(String path, List<Toys> toyData) {
         try (FileWriter fileWriter = new FileWriter(path, true)) {
             for (Toys toy : toyData) {
-                fileWriter.write(String.valueOf(toy) + "\n");
+                fileWriter.write(toy + "\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writeToFile2(String path2, List<Toys> toyData) {
+        try (FileWriter fileWriter2 = new FileWriter(path2, true)) {
+            Set<String> oneToys = new HashSet<>();
+            for (Toys toy : toyData) {
+                if (oneToys.add(toy.getName())) {
+                    fileWriter2.write(toy + "\n");
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -35,7 +49,7 @@ public class Files {
     }
 
     public void readFile() {
-        String path = "src/Files/ListToys.txt";
+        String path = "src/Files/ReadToys.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             int count = 1;

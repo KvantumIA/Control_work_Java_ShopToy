@@ -11,10 +11,11 @@ public class MainMenu {
     public void start() {
         System.out.println("Меню: \n" +
                 "1. Добавить игрушку. \n" +
-                "2. Вывести список игрушек.\n" +
-                "3. Разыграть случайную игрушку. \n" +
-                "4. . \n" +
-                "5. Выход.");
+                "2. Записать в файл. \n" +
+                "3. Вывести список игрушек.\n" +
+                "4. Разыграть случайную игрушку. \n" +
+                "5. Удалить игрушку. \n" +
+                "6. Выход.");
         System.out.print("Выберите пункт меню: ");
         Scanner scanner = new Scanner(System.in);
         int nameMenu = scanner.nextInt();
@@ -27,22 +28,27 @@ public class MainMenu {
                 Scanner scanner2 = new Scanner(System.in);
                 int count = scanner2.nextInt();
                 controller.createToy(name, count);
-                files.fileSave(controller.toysData());
                 System.out.println("Игрушка добавлена");
                 continueMenu();
                 break;
             case 2:
+                files.fileSave(controller.toysData());
+                continueMenu();
+                break;
+            case 3:
                 System.out.println("Список игрушек:");
                 controller.readFile();
                 continueMenu();
                 break;
-            case 3:
+            case 4:
                 System.out.println("Выпала игрушка : " + controller.getToysRandom());
                 continueMenu();
                 break;
-            case 4:
-
             case 5:
+
+                continueMenu();
+                break;
+            case 6:
                 break;
             default:
                 System.out.println("Вы ввели неверный пункт меню. Повторите.");
@@ -63,6 +69,10 @@ public class MainMenu {
                 start();
                 break;
             case 2:
+                break;
+            default:
+                System.out.println("Вы ввели неверный пункт меню. Повторите.");
+                start();
                 break;
         }
     }
