@@ -1,8 +1,16 @@
+package Controller;
+
 import java.util.*;
+import Data.DataService;
+import Data.Files;
+import Data.Shop;
+import Data.Toys;
+
 
 public class Controller {
     private final DataService dataService = new DataService();
     private final Shop shop = new Shop();
+    private final Files files = new Files();
 
     public void createToy(String name, int count) {
         dataService.createToy(name, count);
@@ -24,10 +32,21 @@ public class Controller {
     }
 
     public void getQueue() {
-        PriorityQueue<Toys> queue = shop.getToysQueue();
-        for (Toys toy : queue) {
-            System.out.println(toy);
+        PriorityQueue<Toys> queue = shop.getQueue();
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
         }
+    }
+
+    public Toys getToysRandom() {
+        Random random = new Random();
+        List<Toys> toys = files.saveAsList();
+        int randomIndex = random.nextInt(toys.size());
+        return toys.get(randomIndex);
+    }
+
+    public void readFile(){
+        files.readFile();
     }
 }
 

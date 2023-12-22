@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package Data;
+
+import Data.DataService;
+import Data.Toys;
+
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -19,19 +23,7 @@ public class Shop {
     }
 
     public void addShopQueue(List<Toys> toys) {
-//        List<Toys> queueToy = new ArrayList<>(toys);
-//        PriorityQueue<Toys> queue1 = new PriorityQueue<>();
-//        for(Toys toy : queueToy){
-//            this.queue.add(toy);
         this.queue.addAll(toys);
-
-//        this.queue.addAll(queueToy);
-    }
-
-    public PriorityQueue<Toys> getToysQueue() {
-        PriorityQueue<Toys> toysQueue = new PriorityQueue<>();
-        toysQueue.addAll(queue);
-        return toysQueue;
     }
 }
 

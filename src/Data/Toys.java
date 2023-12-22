@@ -1,3 +1,5 @@
+package Data;
+
 import java.util.List;
 
 public abstract class Toys {
@@ -28,7 +30,7 @@ public abstract class Toys {
 
     @Override
     public String toString() {
-        return "Toys{" +
+        return "Data.Toys{" +
                 "name='" + Name + '\'' +
                 ", count=" + Count +
                 '}';

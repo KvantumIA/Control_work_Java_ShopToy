@@ -1,3 +1,8 @@
+package Data;
+
+import Data.Toy;
+import Data.Toys;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +20,16 @@ public class DataService {
     public void setToysList(List<Toys> toysList) {
         this.toysList = toysList;
     }
-    private int getFreeId(){
+
+    private int getFreeId() {
         int lastId = 1;
-        for (Toys toy: toysList) {
-            lastId = ((Toy)toy).getToyId()+ 1;
+        for (Toys toy : toysList) {
+            lastId = ((Toy) toy).getToyId() + 1;
         }
         return lastId;
     }
-    public void createToy(String name, Integer count){
+
+    public void createToy(String name, Integer count) {
         int id = getFreeId();
         for (int i = 0; i < count; i++) {
             Toy toy = new Toy(name, count, id);
@@ -30,9 +37,10 @@ public class DataService {
             id += 1;
         }
     }
-    public List<Toys> getAllToys(){
+
+    public List<Toys> getAllToys() {
         List<Toys> toyList = new ArrayList<>();
-        for (Toys toy: toysList) {
+        for (Toys toy : toysList) {
             toyList.add(toy);
         }
         return toyList;

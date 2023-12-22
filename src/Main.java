@@ -1,21 +1,20 @@
-import java.util.ArrayList;
+import Controller.MainMenu;
+import Data.Files;
+
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class Main {
     public static void main(String[] args) {
-        Controller controller1 = new Controller();
-        controller1.createToy("Робот", 2);
-//        controller1.getToys();
+//        Controller.Controller controller1 = new Controller.Controller();
+//        controller1.createToy("Робот", 2);
+//        controller1.createToy("Кукла", 3);
+//        controller1.createToy("Конструктор", 2);
+//        controller1.createToy("Машинка", 6);
 
-//        Controller controller2 = new Controller();
-//        controller2.createToy("Кукла", 3);
-//        controller2.getToys();
+//        MainMenu menu = new MainMenu();
+//        menu.start();
 
-//        List<Toys> q1 = controller1.toysData();
-//        System.out.println(q1);
-
-        controller1.createQueue(controller1.toysData());
-        controller1.getQueue();
+        Files files = new Files();
+        System.out.println(files.saveAsList());
     }
 }
