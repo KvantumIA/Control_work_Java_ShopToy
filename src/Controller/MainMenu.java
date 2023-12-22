@@ -1,6 +1,5 @@
 package Controller;
 
-import Controller.Controller;
 import Data.Files;
 
 import java.util.Scanner;
@@ -33,7 +32,7 @@ public class MainMenu {
                 continueMenu();
                 break;
             case 2:
-                System.out.println(" Список игрушек:");
+                System.out.println("Список игрушек:");
                 controller.readFile();
                 continueMenu();
                 break;

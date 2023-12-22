@@ -47,55 +47,14 @@ public class Files {
             e.printStackTrace();
         }
     }
-//    public List<Toys> saveAsList(){
-//        String path = "src/Files/ListToys.txt";
-//        List<Toys> saveAsList = new ArrayList<>();
-//        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                saveAsList.add(line);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return saveAsList;
-//    }
 
-//    public List<Toys> saveAsList(){
-//        String path = "src/Files/ListToys.txt";
-//        List<Toys> saveAsList = new ArrayList<>();
-//        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] parts = line.split(", "); // Предположим, что данные разделены запятой
-//                System.out.println(Arrays.toString(parts));
-//                int id = Integer.parseInt(parts[0].split("=")[1].trim());
-//                String name = parts[1].split("=")[1].trim();
-//                int chance = Integer.parseInt(parts[2].split("=")[1].replace("%", "").trim());
-//                System.out.println(chance);
-//                Toys toy = new Toy(name, id, chance);
-//                saveAsList.add(toy);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return saveAsList;
-//    }
-
-    public List<Toys> saveAsList(){
+    public List<String> saveAsList() {
         String path = "src/Files/ListToys.txt";
-        List<Toys> saveAsList = new ArrayList<>();
+        List<String> saveAsList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(", "); // Предположим, что данные разделены запятой
-                System.out.println(Arrays.toString(parts));
-                int id = Integer.parseInt(parts[0].split("=")[1].trim());
-                String name = parts[1].split("=")[1].trim();
-                int chance = Integer.parseInt(parts[2].split("=")[1].replace("%", "").trim());
-                System.out.println(chance);
-                Toys toy = new Toy(name, id, chance);
-                saveAsList.add(toy);
+                saveAsList.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();

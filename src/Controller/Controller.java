@@ -1,6 +1,9 @@
 package Controller;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import Data.DataService;
 import Data.Files;
 import Data.Shop;
@@ -38,15 +41,30 @@ public class Controller {
         }
     }
 
-    public Toys getToysRandom() {
+    public String getToysRandom() {
         Random random = new Random();
-        List<Toys> toys = files.saveAsList();
+        List<String> toys = files.saveAsList();
         int randomIndex = random.nextInt(toys.size());
-        return toys.get(randomIndex);
+        String toy = toys.get(randomIndex);
+        String[] parts = toy.split(", ");
+        String[] id = parts[0].split("=");
+        String[] name = parts[1].split("=");
+        String[] chans = parts[2].split("=");
+        String[] chans2 = chans[1].split("%");
+        return "ID = " + id[1] + ", Название =" + name[1] + ", Шанс на выпадение =" + chans2[0] + "%";
     }
 
-    public void readFile(){
+    public void readFile() {
         files.readFile();
+    }
+
+    public void delToyFile(){
+        System.out.println("Список игрушек:");
+        readFile();
+        System.out.print("Напишите название игрушки: ");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+
     }
 }
 

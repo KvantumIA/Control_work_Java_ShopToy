@@ -20,7 +20,7 @@ public class Toy extends Toys implements Comparable<Toy> {
     public String toString() {
         return "Data.Toy{" +
                 "Data.Toys ID=" + toyId +
-                ", Название = '" + getName() + '\'' +
+                ", Название = " + getName() +
                 ", Шанс на выпадение = " + getCount() + "0%" +
                 '}';
     }

@@ -11,10 +11,7 @@ public class Main {
 //        controller1.createToy("Конструктор", 2);
 //        controller1.createToy("Машинка", 6);
 
-//        MainMenu menu = new MainMenu();
-//        menu.start();
-
-        Files files = new Files();
-        System.out.println(files.saveAsList());
+        MainMenu menu = new MainMenu();
+        menu.start();
     }
 }
