@@ -8,8 +8,6 @@ import java.util.PriorityQueue;
 
 public class Shop {
     private PriorityQueue<Toys> queue;
-    private final DataService dataService = new DataService();
-    private final Files files = new Files();
 
     public Shop() {
         this.queue = new PriorityQueue<>();
