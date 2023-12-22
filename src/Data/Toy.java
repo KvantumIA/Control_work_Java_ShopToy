@@ -3,8 +3,8 @@ package Data;
 public class Toy extends Toys implements Comparable<Toy> {
     private int toyId;
 
-    public Toy(String name, Integer count, int id) {
-        super(name, count);
+    public Toy(String name, Integer chance, int id) {
+        super(name, chance);
         this.toyId = id;
     }
 
@@ -18,10 +18,10 @@ public class Toy extends Toys implements Comparable<Toy> {
 
     @Override
     public String toString() {
-        return "Data.Toy{" +
-                "Data.Toys ID=" + toyId +
+        return "Игрушка{" +
+                "ID=" + toyId +
                 ", Название = " + getName() +
-                ", Шанс на выпадение = " + getCount() + "0%" +
+                ", Шанс выпадение = " + getCount() + "%" +
                 '}';
     }
 

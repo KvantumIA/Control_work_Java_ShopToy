@@ -14,7 +14,7 @@ public class MainMenu {
                 "2. Записать в файл. \n" +
                 "3. Вывести список игрушек.\n" +
                 "4. Разыграть случайную игрушку. \n" +
-                "5. Удалить игрушку. \n" +
+                "5. Очистить список. \n" +
                 "6. Выход.");
         System.out.print("Выберите пункт меню: ");
         Scanner scanner = new Scanner(System.in);
@@ -42,10 +42,12 @@ public class MainMenu {
                 break;
             case 4:
                 System.out.println("Выпала игрушка : " + controller.getToysRandom());
+                controller.saveGift(controller.getToysRandom());
                 continueMenu();
                 break;
             case 5:
-
+                files.clearFile();
+                System.out.println("Список очищен.");
                 continueMenu();
                 break;
             case 6:
@@ -69,6 +71,7 @@ public class MainMenu {
                 start();
                 break;
             case 2:
+                files.fileSave(controller.toysData());
                 break;
             default:
                 System.out.println("Вы ввели неверный пункт меню. Повторите.");

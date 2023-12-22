@@ -62,17 +62,52 @@ public class Files {
         }
     }
 
-    public List<String> saveAsList() {
+    public List<Toys> saveAsList() {
         String path = "src/Files/ListToys.txt";
-        List<String> saveAsList = new ArrayList<>();
+        List<Toys> saveAsList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                saveAsList.add(line);
+                String[] parts = line.split(", ");
+                String[] id = parts[0].split("=");
+                String[] name = parts[1].split("= ");
+                String[] chance = parts[2].split("= ");
+                String[] chance2 = chance[1].split("%");
+                int newId = Integer.parseInt(id[1]);
+                Integer chance3 = Integer.valueOf(chance2[0]);
+                saveAsList.add(new Toy(name[1], chance3, newId));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | IllegalArgumentException e) {
+            System.out.println("Файл пустой!");
+        } catch (Exception s){
+            System.out.println("Файл пустой2!");
         }
         return saveAsList;
+    }
+
+    public void clearFile(){
+        String path = "src/Files/ListToys.txt";
+        String path2 = "src/Files/ReadToys.txt";
+        try (FileWriter fileWriter = new FileWriter(path, false);
+        FileWriter fileWriter2 = new FileWriter(path2, false)){
+            String clear = "";
+            fileWriter.write(clear);
+            fileWriter2.write(clear);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void saveGift(Toys toy){
+        String path = "src/Files/GiftToys.txt";
+        List<Toys> toys = new ArrayList<>();
+        toys.add(toy);
+        try (FileWriter fileWriter = new FileWriter(path, true)){
+            for (Toys t : toys) {
+                fileWriter.write(t + "\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

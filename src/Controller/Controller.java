@@ -30,7 +30,8 @@ public class Controller {
         return new ArrayList<>(dataService.getAllToys());
     }
 
-    public void createQueue(List<Toys> toys) {
+    public void createQueue() {
+        List<Toys> toys = files.saveAsList();
         shop.addShopQueue(toys);
     }
 
@@ -41,21 +42,27 @@ public class Controller {
         }
     }
 
-    public String getToysRandom() {
+    public Toys getToysRandom() {
         Random random = new Random();
-        List<String> toys = files.saveAsList();
-        int randomIndex = random.nextInt(toys.size());
-        String toy = toys.get(randomIndex);
-        String[] parts = toy.split(", ");
-        String[] id = parts[0].split("=");
-        String[] name = parts[1].split("=");
-        String[] chans = parts[2].split("=");
-        String[] chans2 = chans[1].split("%");
-        return "ID = " + id[1] + ", Название =" + name[1] + ", Шанс на выпадение =" + chans2[0] + "%";
+        List<Toys> toys = files.saveAsList();
+        try {
+            if (toys != null && !toys.isEmpty()) {
+                int randomIndex = random.nextInt(toys.size());
+                return toys.get(randomIndex);
+            } else {
+            throw new RuntimeException("Список игрушек пустой");
+        }
+        } catch (Exception e) {
+            throw new RuntimeException("Ошибка при выборе случайной игрушки", e);
+        }
     }
 
-    public void readFile() {
-        files.readFile();
+        public void readFile () {
+            files.readFile();
+        }
+
+        public void saveGift (Toys toy){
+            files.saveGift(toy);
+        }
     }
-}
 

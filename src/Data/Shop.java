@@ -9,6 +9,7 @@ import java.util.PriorityQueue;
 public class Shop {
     private PriorityQueue<Toys> queue;
     private final DataService dataService = new DataService();
+    private final Files files = new Files();
 
     public Shop() {
         this.queue = new PriorityQueue<>();
@@ -22,8 +23,8 @@ public class Shop {
         this.queue = queue;
     }
 
-    public void addShopQueue(List<Toys> toys) {
-        this.queue.addAll(toys);
+    public void addShopQueue(List<Toys> s) {
+        this.queue.addAll(s);
     }
 }
 

@@ -31,7 +31,7 @@ public class DataService {
 
     public void createToy(String name, Integer count) {
         int id = getFreeId();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count / 10; i++) {
             Toy toy = new Toy(name, count, id);
             toysList.add(toy);
             id += 1;
